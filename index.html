@@ -78,6 +78,10 @@
 			.grey-dark {
 				color:#333;
 			}
+			.page {
+				position:relative;
+				min-height:100vh;
+			}
 			button {
 				background-color:#2ebc4f;
 				color:#fff;
@@ -122,7 +126,14 @@
 				border-bottom: 1px solid #e6e5e6;
 			}
 			main {
-				margin-top:150px;
+				margin-top: 150px;
+				padding-bottom: 100px;
+			}
+			footer {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				height: 100px;
 			}
 			.blue-gradient {
 				background: linear-gradient(rgb(0, 43, 95), #4488ff);
@@ -154,137 +165,139 @@
 		</style>
 		<link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
 	</head>
-	<body class="system-font">
-		<header>
-			<div class="content">
-				<nav>
-					<ul class="menu f4">
-						<li><a href="/faq.html">FAQ</a></li>
-						<li><a href="#footer">Contact</a></li>
-						<!--<li><a href="#signup"><button>Get Started Free!</button></a></li>-->
-					</ul>
-				</nav>
-			</div>
-			<section class="grey-section">
-				<form action="https://gmail.us3.list-manage.com/subscribe/post?u=8773cedf67e2755a4ec1eb9ce&amp;id=92234d2d72" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-					<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_8773cedf67e2755a4ec1eb9ce_92234d2d72" tabindex="-1" value=""></div>
-					<div class="content">
-						<div class="flex w-80 f4" style="margin: auto">
-							<a name="signup"></a>
-							<div class="w-50 pr2" style="line-height: 40px">Notify me when SQL Defender is publicly available</div>
-							<div class="flex w-50">
-								<input class="w-75" type="email" value="" name="EMAIL" id="subscribe_email" placeholder="email address" required>
-								<button class="w-25 ml2" type="submit" name="subscribe">Submit</button>
+	<body>
+		<div class="system-font page"
+			<header>
+				<div class="content">
+					<nav>
+						<ul class="menu f4">
+							<li><a href="/faq.html">FAQ</a></li>
+							<li><a href="#footer">Contact</a></li>
+							<!--<li><a href="#signup"><button>Get Started Free!</button></a></li>-->
+						</ul>
+					</nav>
+				</div>
+				<section class="grey-section">
+					<form action="https://gmail.us3.list-manage.com/subscribe/post?u=8773cedf67e2755a4ec1eb9ce&amp;id=92234d2d72" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+						<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_8773cedf67e2755a4ec1eb9ce_92234d2d72" tabindex="-1" value=""></div>
+						<div class="content">
+							<div class="flex w-80 f4" style="margin: auto">
+								<a name="signup"></a>
+								<div class="w-50 pr2" style="line-height: 40px">Notify me when SQL Defender is publicly available</div>
+								<div class="flex w-50">
+									<input class="w-75" type="email" value="" name="EMAIL" id="subscribe_email" placeholder="email address" required>
+									<button class="w-25 ml2" type="submit" name="subscribe">Submit</button>
+								</div>
 							</div>
 						</div>
-					</div>
-				</form>
-			</section>
-		</header>
-		<main>
-			<secton>
-				<div class="content">
-					<h1 class="logo-font f1 b tc">
-						<span class="yellow">SQL</span>
-						<span class="blue-dark">Defender</span>
-					</h1>
-					<h2 class="f2 tc">
-						Access control proxy with audit logs for PostgreSQL
-					</h2>
-				</div>
-			</secton>
-			<section>
-				<div class="content mv4">
-					<div class="flex">
-						<div class="blurb">
-							<h3>
-								Secure your app by reducing the size of the TCB
-							</h3>
-							<p>
-								A typical application has the security access rules scattered throughout the code via various disjoint mechanisms.
-								It's technical debt that grows ever harder to reason about, and makes the trusted computing base (TCB) include the entire application.
-								By consolidating all your security rules under a single unified framework with SQL Defender, the TCB shrinks to just include
-								your access logic plus your database.	Factoring out your access rules into one unified system makes them easy to reason about and <u>reduces bugs</u>.
-							</p>
-						</div>
-						<div class="blurb ml3">
-							<h3>
-								Improve PostgreSQL Performance
-							</h3>
-							<p>
-								Access control rules are optimized and compiled into the query. The planner is free to
-								execute that query with its joins in the optimal order, <a href="/faq.html#RLS">unlike with PostgreSQL's RLS</a>. Connection pooling
-								reduces load and memory usage on the database server. Query deduplicaton and in-memory caching
-								reduce load on the database and improve latency.
-							</p>
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="dark blue-gradient pv4">
-				<div class="content">
-					<div>
-						<div class="blurb w-80" style="margin:auto">
-							<h3 class="tc">
-								Make the simple access rules easy, and the hard possible
-							</h3>
-							<p>
-								Common tasks of restricting access to a user's own data, or by read / insert / update / delete, 
-								or restricing visible columns are	easy. With the ability to pass arbitrary context from the
-								application and write turing complete PL/SQL functions to control access on a row-level,
-								you can codify the most complex domain logic. Keep all your rules, including PL/SQL in your version
-								control and SQL Defender will handle updating them in the database.
-							</p>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!--
-			<section style="height:600px">
+					</form>
+				</section>
+			</header>
+			<main>
+				<secton>
 					<div class="content">
-						Add examples here in a carousel.
+						<h1 class="logo-font f1 b tc">
+							<span class="yellow">SQL</span>
+							<span class="blue-dark">Defender</span>
+						</h1>
+						<h2 class="f2 tc">
+							Access control proxy with audit logs for PostgreSQL
+						</h2>
 					</div>
-			</section>
-			-->
-			<section>
+				</secton>
+				<section>
 					<div class="content mv4">
 						<div class="flex">
-								<div class="blurb ml3">
-									<h3>
-										Stops SQL injection attacks cold
-									</h3>
-									<p>
-										SQL Defender makes a good part of a defense in-depth strategy against SQL injection.
-										Because SQL injection happens at the untrusted application layer, even if successful
-										it cannot grant	access to data the user couldn't already see. SQL Defender rewrites or
-										rejects those queries	the same as any others to enforce the security access rules.
-										Multiple queries delimited with semicolons are not permitted, shutting down a whole
-										class of SQL injection attacks. If your application relies on this risky behavior
-										you	would need to remedy that before you can use SQL Defender.
-									</p>
-								</div>
 							<div class="blurb">
 								<h3>
-									Blockchain audit logs saved to S3 or compatible
+									Secure your app by reducing the size of the TCB
 								</h3>
 								<p>
-									Every block appended to the audit log is forms part of a cyptographic chain
-									with the blocks that come before it, similar to how it works in Bitcoin.
-									You can be certain that every operation was performed as logged
-									without any retroactive changes (e.g. hackers covering their traces.) 
-									The logs are encrypted and saved to	S3 compatible cloud storage in your account.
-									They can also be replicated in full or just the block signatures to our
-									offsite cloud storage and automatically verified that they match
-									when reading the logs back, ensuring they've not been tampered with.
-									You can create filters to keep sensitive information out of your logs.
+									A typical application has the security access rules scattered throughout the code via various disjoint mechanisms.
+									It's technical debt that grows ever harder to reason about, and makes the trusted computing base (TCB) include the entire application.
+									By consolidating all your security rules under a single unified framework with SQL Defender, the TCB shrinks to just include
+									your access logic plus your database.	Factoring out your access rules into one unified system makes them easy to reason about and <u>reduces bugs</u>.
+								</p>
+							</div>
+							<div class="blurb ml3">
+								<h3>
+									Improve PostgreSQL Performance
+								</h3>
+								<p>
+									Access control rules are optimized and compiled into the query. The planner is free to
+									execute that query with its joins in the optimal order, <a href="/faq.html#RLS">unlike with PostgreSQL's RLS</a>. Connection pooling
+									reduces load and memory usage on the database server. Query deduplicaton and in-memory caching
+									reduce load on the database and improve latency.
 								</p>
 							</div>
 						</div>
 					</div>
 				</section>
-		</main>
-		<footer style="height:200px" class="dark blue-gradient">
-			<a name="footer"></a>
-		</footer>
+				<section class="dark blue-gradient pv4">
+					<div class="content">
+						<div>
+							<div class="blurb w-80" style="margin:auto">
+								<h3 class="tc">
+									Make the simple access rules easy, and the hard possible
+								</h3>
+								<p>
+									Common tasks of restricting access to a user's own data, or by read / insert / update / delete, 
+									or restricing visible columns are	easy. With the ability to pass arbitrary context from the
+									application and write turing complete PL/SQL functions to control access on a row-level,
+									you can codify the most complex domain logic. Keep all your rules, including PL/SQL in your version
+									control and SQL Defender will handle updating them in the database.
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!--
+				<section style="height:600px">
+						<div class="content">
+							Add examples here in a carousel.
+						</div>
+				</section>
+				-->
+				<section>
+						<div class="content mv4">
+							<div class="flex">
+									<div class="blurb ml3">
+										<h3>
+											Stops SQL injection attacks cold
+										</h3>
+										<p>
+											SQL Defender makes a good part of a defense in-depth strategy against SQL injection.
+											Because SQL injection happens at the untrusted application layer, even if successful
+											it cannot grant	access to data the user couldn't already see. SQL Defender rewrites or
+											rejects those queries	the same as any others to enforce the security access rules.
+											Multiple queries delimited with semicolons are not permitted, shutting down a whole
+											class of SQL injection attacks. If your application relies on this risky behavior
+											you	would need to remedy that before you can use SQL Defender.
+										</p>
+									</div>
+								<div class="blurb">
+									<h3>
+										Blockchain audit logs saved to S3 or compatible
+									</h3>
+									<p>
+										Every block appended to the audit log is forms part of a cyptographic chain
+										with the blocks that come before it, similar to how it works in Bitcoin.
+										You can be certain that every operation was performed as logged
+										without any retroactive changes (e.g. hackers covering their traces.) 
+										The logs are encrypted and saved to	S3 compatible cloud storage in your account.
+										They can also be replicated in full or just the block signatures to our
+										offsite cloud storage and automatically verified that they match
+										when reading the logs back, ensuring they've not been tampered with.
+										You can create filters to keep sensitive information out of your logs.
+									</p>
+								</div>
+							</div>
+						</div>
+					</section>
+			</main>
+			<footer style="height:200px" class="dark blue-gradient">
+				<a name="footer"></a>
+			</footer>
+		</div>
 	</body>
 </html>
