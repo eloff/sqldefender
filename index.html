@@ -25,7 +25,6 @@
 				font: inherit;
 				vertical-align: baseline;
 			}
-			/* HTML5 display-role reset for older browsers */
 			article, aside, details, figcaption, figure, 
 			footer, header, hgroup, menu, nav, section {
 				display: block;
@@ -48,9 +47,10 @@
 				border-collapse: collapse;
 				border-spacing: 0;
 			}
-		</style>
-		<link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
-		<style>
+			summary:focus {
+				outline: none;
+			}
+
 			.logo-font {
 				font-family:"Ariel Rounded MT BOLD","Arial BoldMT","Ariel Black",sans-serif;
 			}
@@ -96,13 +96,19 @@
 				margin-right:8px;
 				font-weight:400;
 			}
+			a, .link {
+				color:#48f;
+				text-decoration: underline;	
+			}
+			a:hover, .link:hover {
+				color:#000;
+				cursor: pointer;
+			}
 			.dark a {
 				color:#fc0;
-				text-decoration:none;
 			}
 			.dark a:hover {
 				color:#fff;
-				text-decoration:underline;
 			}
 			.content {
 				max-width:1180px;
@@ -127,7 +133,27 @@
 			#subscribe_email {
 				padding: 8px;
 			}
+			.blurb {
+				margin: 16px;
+				width: 50%;
+			}
+			.blurb h3 {
+				font-size: 24px;
+				margin-bottom: 16px;
+				color:#48f;
+			}
+			.blurb p {
+				font-size: 18px;
+				line-height: 28px;
+			}
+			.dark .blurb h3 {
+				color:#fc0;
+			}
+			.dark .blurb p {
+				color:#fff;
+			}
 		</style>
+		<link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
 	</head>
 	<body class="system-font">
 		<header class="dark">
@@ -143,16 +169,62 @@
 		</header>
 		<main>
 			<secton>
-				<p>
+				<div class="content">
 					<h1 class="logo-font f1 b tc">
 						<span class="yellow">SQL</span>
 						<span class="blue-dark">Defender</span>
 					</h1>
-				</p>
+					<h2 class="f2 tc">
+						Access control proxy with audit logs for PostgreSQL
+					</h2>
+				</div>
 			</secton>
-			<section style="height:300px;" class="blue-gradient">
+			<section>
+				<div class="content">
+					<div class="flex">
+						<div class="blurb">
+							<h3>
+								Secure your app by reducing the amount of trusted code
+							</h3>
+							<p>
+								A typical application has the security access rules scattered throughout the code via various disjoint mechanisms.
+								It's technical debt that grows ever harder to reason about, and makes the trusted computing base (TCB) include the entire application.
+								By consolidating all your security rules under a single unified framework with SQL Defender, the TCB shrinks to just include
+								your access logic plus your database.	Factoring out your access rules into one unified system makes them easy to reason about and <u>reduces bugs</u>.
+							</p>
+						</div>
+						<div class="blurb">
+							<h3>
+								Improve PostgreSQL Performance
+								<div>&nbsp;</div>
+							</h3>
+							<p>
+								Access control rules are optimized and compiled into the query. The planner is free to
+								execute that query with its joins in the optimal order, <a href="/faq.html#RLS">unlike with PostgreSQL's RLS</a>. Connection pooling
+								reduces load and memory usage on the database server. Query deduplicaton and in-memory caching
+								reduce load on the database and improve latency.
+							</p>
+						</div>
+					</div>
+				</div>
 			</section>
-			<section style="height:300px;">
+			<section class="dark blue-gradient">
+				<div class="content">
+					<div>
+						<div class="blurb w-80" style="margin:auto">
+							<h3 class="tc">
+								Make the simple access rules easy, and the hard possible
+							</h3>
+							<p>
+								Common tasks of restricting access to a user's own data, or by read / insert / update / delete, 
+								or restricing visible columns are	easy. With the ability to pass arbitrary context from the
+								application and write turing complete PL/SQL functions to control access on a row-level,
+								you can codify the most complex domain logic. Keep all your rules, including PL/SQL in your version
+								control and SQL Defender will handle updating them in the database.
+							</p>
+						</div>
+					</div>
+				</div>
 			</section>
 			<section class="grey-section">
 				<form action="https://gmail.us3.list-manage.com/subscribe/post?u=8773cedf67e2755a4ec1eb9ce&amp;id=92234d2d72" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
@@ -170,8 +242,47 @@
 					</div>
 				</form>
 			</section>
+			<section style="height:600px">
+					<div class="content">
+						Add examples here in a carousel.
+					</div>
+			</section>
+			<section>
+					<div class="content">
+						<div class="flex">
+							<div class="blurb">
+								<h3>
+									Blockchain audit logs saved to S3 (or equivalent)
+								</h3>
+								<p>
+									Every block appended to the audit log is forms part of a cyptographic chain
+									with the blocks that come before it, similar to how it works in Bitcoin.
+									You can be certain that every operation was performed as logged
+									without any retroactive changes (e.g. hackers covering their traces.) The
+									cryptographic signatures are replicated to our systems and automatically
+									verified when reading the logs. The logs are encrypted and saved to
+									cloud storage in your account. You can create filters to keep sensitive
+									information out of your logs.
+								</p>
+							</div>
+							<div class="blurb">
+								<h3>
+									Stop SQL injection attacks
+								</h3>
+								<p>
+									SQL Defender makes a good part of a defense in-depth strategy against SQL injection.
+									Because SQL injection happens at the untrusted application layer, it cannot grant
+									access to data the user couldn't already see. SQL Defender rewrites those queries
+									the same as any others to enforce the security access rules. Multiple queries
+									delimited with semicolons are not permitted, shutting down a whole class of SQL injection
+									attacks.
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
 		</main>
-		<footer>
+		<footer style="height:200px" class="dark blue-gradient">
 			<a name="footer"></a>
 		</footer>
 	</body>
