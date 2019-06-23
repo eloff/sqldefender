@@ -1,0 +1,12 @@
+name: Minimal
+license: PRIVATE
+licenselink:
+description:
+homepage: https://sqldefender.com/
+tags:
+features:
+min_version: 0.41
+
+author:
+  name: "Daniel Eloff"
+  homepage: "closetothemetal.com"

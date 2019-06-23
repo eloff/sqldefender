@@ -1,0 +1,21 @@
+baseURL: http://sqldefender.com/
+languageCode: en-us
+title: SQL Defender
+theme: minimal
+menu:
+  main:
+    - identifier: docs
+      name: Documentation
+      title: Documentation
+      url: /documentation.html
+      weight: 1
+    - identifier: faq
+      name: FAQ
+      title: Frequently Asked Questions
+      url: /faq.html
+      weight: 2
+    - identifier: contact
+      name: Contact
+      title: Contact Us
+      url: "#contact"
+      weight: 3

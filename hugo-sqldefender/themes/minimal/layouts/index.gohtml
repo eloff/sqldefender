@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	{{ partial "head.gohtml" . }}
+	<body>
+		<div class="page">
+			{{ partial "header.gohtml" . }}
+			<main>
+				<section>
+					<div class="content tc">
+						<h2 class="f2 tc mt4">
+							{{ .Params.subtitle }}
+						</h2>
+						{{/*<img src="images/3d-data-shield.png" alt="database access security" width="400" />*/}}
+					</div>
+				</section>
+				<section>
+					<div class="content mv4">
+						<div class="flex">
+							{{ partial "blurb.gohtml" (dict "blurb" .Params.blurbs.secure) }}
+							{{ partial "blurb.gohtml" (dict "class" "ml3" "blurb" .Params.blurbs.performance) }}
+						</div>
+					</div>
+				</section>
+				<section class="dark blue-gradient pv4">
+					<div class="content">
+						<div>
+							{{ partial "blurb.gohtml" (dict "class" "w-80 mauto" "blurb" .Params.blurbs.simple) }}
+						</div>
+					</div>
+				</section>
+				<!--
+				<section style="height:600px">
+						<div class="content">
+							Add examples here in a carousel.
+						</div>
+				</section>
+				-->
+				<section>
+					<div class="content mv4">
+						<div class="flex">
+							{{ partial "blurb.gohtml" (dict "blurb" .Params.blurbs.injection) }}
+							{{ partial "blurb.gohtml" (dict "class" "ml3" "blurb" .Params.blurbs.audit) }}
+						</div>
+					</div>
+				</section>
+				{{ partial "signup.gohtml" . }}
+			</main>
+			{{ partial "footer.gohtml" . }}
+		</div>
+	</body>
+</html>

@@ -1,0 +1,7 @@
+<nav class="w-60">
+	<ul class="menu f3 flex">
+		{{ range .Site.Menus.main }}
+			<li class="ml1 ml2-ns"><a title="{{ .Title }}" href="{{ .URL }}">{{ .Name }}</a></li>
+		{{ end }}
+	</ul>
+</nav>
