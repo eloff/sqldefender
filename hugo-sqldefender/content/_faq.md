@@ -1,14 +1,13 @@
 ---
 breadcrumb: Home
 subtitle: Frequently Asked Questions
-sectionOrder:
+sections:
   - General
   - Performance & Scaling
   - Billing
   - Audit Logs
   - Compatibility
   - Howto
-  
 faq:
   - General:
       - question: Is SQL Defender open-source?
@@ -22,13 +21,56 @@ faq:
           it’s well known that it’s hard to monetize effectively. This is exacerbated by the current trend of massive
           cloud companies monetizing open-source products by providing them as a service without contributing back.
           There are a few projects like Linux that are notable exceptions, but by and large they’re the exceptions to
-          the rule. For every one success like that there are tens of thousands of projects that languish in obscurity because the creators can’t quit their day job.
-      - question: 
-        answer:
+          the rule. For every one success there are tens of thousands of projects that languish neglected in obscurity
+          because the creators can’t quit their day job. The popularity of open-source licenses has deprived the software
+          ecosystem of better maintained and higher quality software and we're all poorer for it. However, we're still
+          comitted to the freedom at the core of the open-source philosophy. Freedom to modify our software to better
+          suit your goals, freedom to use our software in non-commercial projects, and a generous free tier for
+          bootstrapped startups to get started without breaking the bank.
+      - question: Why not use Postgres RLS?
+        answer: "The most common reaction lot of engineers hearing about SQL Defender is “why not just use row-level
+          security (RLS) in PostgreSQL?” It’s a fair question, and we initially considered RLS very seriously for this task, but decided upon further examination that it wasn’t a good fit. So SQL Defender was born. The reasoning would make a better blog post than a faq entry, but here's a summary of the argument.
+
+          * ### Performance
+
+          To prevent leaking information, RLS filters are materialized before joins or where clause filtering which can
+          turn every query into a table scan unless you’re careful to index every RLS condition and mark all functions
+          involved as leakproof. That can make it difficult to use right for unsuspecting developers - and we
+          specifically want SQL Defender to be simple and obvious enough for junior developers to use efficiently and
+          correctly.
+
+          * ### Not fully-supported on RDS
+
+          In order to solve the performance problems above and let the Postgres optimizer execute the query in the
+          most efficient way possible, you need to mark any functions used as leakproof. That requires superuser
+          privileges not available on Amazon’s RDS. This means you have to choose between RDS and efficient RLS
+          queries. RLS is a nice to have, but RDS is often a non-negotiable requirement.
+
+          * ### Overlapping, but not identical requirements
+
+          RLS is great, and has some overlapping requirements with SQL Defender, but it also has subtly different
+          objectives. For example the need to protect against user defined functions leaking secure information
+          is just not a design concern with SQL Defender. We’re not trying to allow untrusted users to create and
+          use user-defined functions safely. We also want to be able to execute query data on behalf of multiple 
+          users safely. Database users is not really the right level of granularity to map one-to-one with application
+          users. Eventually these little mismatches would mean greater total complexity if we built of RDS instead of
+          using our own purpose built system.
+
+          * ### No audit log
+
+          We need a full, searchable, tamper-resistant audit log of every interaction with the database, tied to the
+          application or organization user who initiated it. This is sometimes a regulatory requirement, but it’s
+          also just good opsec. This requirement is out scope for RLS.
+
+          * ### RLS is PostgreSQL only
+
+          SQL Defender is PostgreSQL first, but it’s meant to be ported to other RDBMS systems, and relying so
+          heavily on PostgreSQL only features for core functionality would mean we’d need a different and
+          incompatible approach for other databases, at which point we have two systems to maintain."
       - question: Do you have a managed service?
-        answer: It’s on the roadmap, but currently you’ll need to host it yourself. We try to make this process as 
-          easy as possible by supplying a single binary with no dependencies, and docker and cloud provider images.
-          Please contact us if you have difficulty operating SQL Defender.
+        answer: It’s on the long-term roadmap, but currently you’ll need to host it yourself. We try to make this
+          process as easy as possible by supplying a single binary with no dependencies, and docker and cloud provider
+          images. Please contact us for support if you have difficulty operating SQL Defender.
   - Compatibility:
       - question: Does SQL Defender work with Amazon RDS, Aurora, or Google Cloud SQL?
         answer: Yes, these are fully supported. In fact SQL Defender can help with common problems like the low
@@ -37,8 +79,8 @@ faq:
           connection limits are a limiting factor.
       - question: Does SQL Defender work with other PostgreSQL compatible databases like CockroachDB or YugaByte?
         answer: We only officially test with PostgreSQL currently, but depending how compatible the database is
-        it may work with SQL Defender. Give it a try and contact support if you run into problems. Also
-        please share your experiences with the community so we can have a better answer here!
+          it may work with SQL Defender. Give it a try and contact support if you run into problems. Also
+          please share your experiences with the community so we can have a better answer here!
       - question: What about load balancing or failover between multiple PostgreSQL databases?
         answer: This is not supported yet, but you can accomplish this by putting SQL Defender in front
           of pgpool or pgbouncer.
@@ -84,6 +126,38 @@ faq:
           control closer to what PostgreSQL RLS provides where access controls are applied to all tables in the query, 
           not just the returned columns. Strict mode checks all tables in the query and prevents these kinds of leaks,
           it's closer to how PostgreSQL RLS works.
+      - question: How do roles work?
+        answer: Roles are stored in tables created by SQL Defender. Roles behave much as you’d expect, a user can have
+          many roles, and each role can be used to grant row, column, and sort permissions, etc.
+          If a user has more than one role involved in a security rule, they get access if any of the rules pass 
+          (rules are ORed together.) Roles are also hierarchical, so you can group roles into arbitrary hierarchies
+          and the user acts as if they’re a member of all roles directly assigned to them, plus all roles that
+          descendants of those roles. For example an admin role might be a superset of a supervisor role, itself a
+          superset of the staff role, etc. There’s also the special public role which represents permissions granted
+          to unauthenticated users. Access rules can target one or more roles as well as authenticated (any role) or
+          public (applied to all connections.) You create roles and assign them to your users with standard SQL queries according to your application logic.
+      - question: What about ABAC (attribute-based access control)?
+        answer: The security rules system is a superset of an ABAC system. Access can be controlled by roles, by
+          attributes on the user, attributes on the rows themselves, or attributes in other tables linked through
+          relational joins. Given that you have a full turing complete programming language available in the form of
+          database functions and procedures, e.g. through PL/SQL, you can theoretically use any access control
+          paradigm, or mix and match however you please.
+      - question: What about capability based security?
+        answer: Capability-based security is another security paradigm where possession of a capability both
+          designates the resources and grants some kind of permissions to access that resource. Security is
+          achieved by controlling possession. As with ABAC, you have full freedom to structure your security
+          rules as you like with all of the power of PostgreSQL at your disposal, so there is nothing preventing
+          you from using a capability based access model.
+      - question: What about very complex domain security logic?
+        answer: What if you want to grant read access to a few specific columns, write access to different columns,
+          and only to manager roles, where their email address ends in acme.com, only on Mondays, and only to rows
+          resources where the created_by field references users which are related to the manager as subordinates?
+          You can implement that with SQL Defender. In addition to the flexible and powerful column and row based
+          security, you can write and call custom PL/SQL functions to your heart’s content. With all the power of
+          PostgreSQL at your disposal, you can implement the most complex of access rules, while keeping all of
+          the logic together in one place, separate from the rest of your code, and easy to audit for correctness.
+          # In a future release we want to add further ability to customize all phases of the application of 
+          # security rules and database queries using javascript middleware.
   - Billing:
       - question: Do you offer free licenses for non-commerical use?
         answer: Yes, contact us and tell us about your project and we'll set you up with a free license.
@@ -104,3 +178,4 @@ faq:
           audit logs. We strongly recommend defining more detailed security rules even if it only encapsulates part of
           the access control logic, and the rest remains in the application. This follows a defense in depth philosophy
           where you don’t rely on a single layer for protection."
+---
