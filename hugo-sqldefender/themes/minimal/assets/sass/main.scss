@@ -112,6 +112,10 @@ a:hover, .link:hover {
 .dark a:hover {
 	color:#fff;
 }
+.current, .current:hover {
+	color: inherit;
+	text-decoration: none;
+}
 // Page
 header {
 	border-bottom: 1px solid #e6e5e6;
@@ -169,7 +173,7 @@ button:hover {
 	margin-bottom: 16px;
 	color:#48f;
 }
-.blurb p {
+.blurb p, details {
 	font-size: 18px;
 	line-height: 28px;
 }
@@ -190,6 +194,17 @@ button:hover {
 }
 .blurb.mauto h3 {
 	text-align: center;
+}
+// FAQ
+summary {
+	cursor: pointer;
+}
+summary:focus {
+	text-decoration: underline;
+}
+details h4 {
+	margin: 8px 0;
+	font-size: 22px;
 }
 // Tachyons
 @import "../lib/css/tachyons.min"

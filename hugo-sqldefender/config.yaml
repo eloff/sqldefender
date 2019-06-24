@@ -4,18 +4,23 @@ title: SQL Defender
 theme: minimal
 menu:
   main:
-    - identifier: docs
-      name: Documentation
-      title: Documentation
-      url: /documentation.html
+    - identifier: home
+      name: Home
+      title: Home
+      url: /
       weight: 1
+    # - identifier: docs
+    #   name: Documentation
+    #   title: Documentation
+    #   url: /documentation/
+    #   weight: 2
     - identifier: faq
       name: FAQ
       title: Frequently Asked Questions
-      url: /faq.html
-      weight: 2
+      url: /faq/
+      weight: 3
     - identifier: contact
       name: Contact
       title: Contact Us
       url: "#contact"
-      weight: 3
+      weight: 4
