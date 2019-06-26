@@ -17,7 +17,7 @@ menu:
     - identifier: faq
       name: FAQ
       title: Frequently Asked Questions
-      url: /faq/
+      url: /faq
       weight: 3
     - identifier: contact
       name: Contact

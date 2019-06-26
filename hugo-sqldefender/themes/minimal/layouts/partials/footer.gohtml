@@ -1,10 +1,10 @@
 <footer class="dark blue-gradient">
-	<a name="footer"></a>
-	<div class="content">
-		{{ partial "contact.gohtml" . }}
-		<div class="f5 white tc mv4">
-			<p class="mb1">Copyright © 2017-{{ now.Year }} SQL Defender. SQL Defender is not endorsed or associated with The PostgreSQL Global Development Group.</p>
-			<p>The PostgreSQL elephant logo and the names "PostgreSQL" and "Postgres" are registered trademarks of the PostgreSQL Community Association of Canada.</p>
+	<div class="content" style="height: 100%">
+		<div class="flex flex-wrap" style="height: 100%">
+			{{ partial "contact.gohtml" . }}
+			<div class="f5 white mt2 flex w-100">
+				<p class="mb1 self-end w-100 tc">Copyright © 2017-{{ now.Year }} SQL Defender. SQL Defender is not endorsed or affiliated with The PostgreSQL Global Development Group.</p>
+			</div>
 		</div>
 	</div>
 </footer>

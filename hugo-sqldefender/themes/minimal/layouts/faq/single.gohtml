@@ -9,7 +9,7 @@
 					<div class="flex flex-wrap">
 						{{ range $section := .Params.sections }}
 							<section class="w-50-ns pr3">
-								<h3 class="mv4 f2">{{ $section | title }}</h3>
+								<h3 class="mv3 f3 f2-ns">{{ $section | title }}</h3>
 								{{ range index $.Params.faq $section }}
 									{{ partial "question.gohtml" . }}
 								{{ end }}

@@ -5,26 +5,21 @@
 		<div class="page">
 			{{ partial "header.gohtml" . }}
 			<main>
+				<h2 class="f2 tc mt4 mb3">
+					{{ .Params.subtitle }}
+				</h2>
 				<section>
-					<div class="content tc">
-						<h2 class="f2 tc mt4">
-							{{ .Params.subtitle }}
-						</h2>
-						{{/*<img src="images/3d-data-shield.png" alt="database access security" width="400" />*/}}
-					</div>
-				</section>
-				<section>
-					<div class="content mv4">
-						<div class="flex">
+					<div class="content">
+						<div class="flex flex-wrap flex-nowrap-ns">
 							{{ partial "blurb.gohtml" (dict "blurb" .Params.blurbs.secure) }}
-							{{ partial "blurb.gohtml" (dict "class" "ml3" "blurb" .Params.blurbs.performance) }}
+							{{ partial "blurb.gohtml" (dict "class" "ml3-ns" "blurb" .Params.blurbs.performance) }}
 						</div>
 					</div>
 				</section>
-				<section class="dark blue-gradient pv4">
+				<section class="dark blue-gradient mb3">
 					<div class="content">
 						<div>
-							{{ partial "blurb.gohtml" (dict "class" "w-80 mauto" "blurb" .Params.blurbs.simple) }}
+							{{ partial "blurb.gohtml" (dict "class" "mt3 mauto" "blurb" .Params.blurbs.simple) }}
 						</div>
 					</div>
 				</section>
@@ -36,10 +31,10 @@
 				</section>
 				-->
 				<section>
-					<div class="content mv4">
-						<div class="flex">
+					<div class="content">
+						<div class="flex flex-wrap flex-nowrap-ns">
 							{{ partial "blurb.gohtml" (dict "blurb" .Params.blurbs.injection) }}
-							{{ partial "blurb.gohtml" (dict "class" "ml3" "blurb" .Params.blurbs.audit) }}
+							{{ partial "blurb.gohtml" (dict "class" "ml3-ns" "blurb" .Params.blurbs.audit) }}
 						</div>
 					</div>
 				</section>

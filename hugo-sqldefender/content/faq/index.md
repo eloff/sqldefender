@@ -12,7 +12,7 @@ sections:
 faq:
   general:
     - question: Is SQL Defender open-source?
-      answer: It’s source available, but not OSI open-source. We want to produce an invaluable product for our users
+      answer: "It’s source available, but not OSI open-source. We want to produce an invaluable product for our users
         and a successful business. A successful business in turn provides the funding and support to keep improving 
         the product. The two are inseparable and we’d be doing ourselves and our users a disservice by choosing a
         software license that hobbles either. It's all about choosing a sustainable path for the future. We love and
@@ -20,12 +20,15 @@ faq:
         is exacerbated by the current trend of massive cloud companies monetizing open-source products by providing
         them as a service without contributing back. There are a few projects like Linux that are notable exceptions,
         but by and large they’re the exceptions to the rule. For every one success there are tens of thousands of
-        projects that languish neglected in obscurity because the creators can’t quit their day job. The popularity
-        of open-source licenses has deprived the software ecosystem of better maintained and higher quality software
+        projects that languish neglected in obscurity because the creators can’t quit their day job. The difficulty in monetizing open-source has deprived the software ecosystem of better maintained and higher quality software
         and we're all poorer for it. However, we're still comitted to the freedom at the core of the open-source
-        philosophy. Freedom to modify our software to better suit your goals, freedom to use our software in
-        non-commercial projects, and a generous free tier for bootstrapped startups to get started without breaking
-        the bank.
+        philosophy. Our license allows the same freedoms as a permissive open-source license, except
+        you need a paid license based on your query volume, and you can't sublicense or offer it directly as a service
+        without permission.
+
+        #### What about the (A)GPL?
+
+        It's a radioactive license to large organizations, that makes it a non-starter."
     - question: Why not use Postgres RLS?
       answer: "The most common reaction lot of engineers hearing about SQL Defender is “why not just use row-level
         security (RLS) in PostgreSQL?” It’s a fair question, and we initially considered RLS very seriously for this task, but decided upon further examination that it wasn’t a good fit. So SQL Defender was born. The reasoning would make a better blog post than a faq entry, but here's a summary of the argument.
@@ -157,9 +160,9 @@ faq:
     - question: Do you offer free licenses for non-commerical use?
       answer: Yes, contact us and tell us about your project and we'll set you up with a free license.
     - question: Do you have a free trial or a startup version? 
-      answer: We have a free tier with no time limits. All features, except for enterprise features are available
-        to all tiers, we bill based on the volume of database queries. If for some reason you cannot afford
-        the license, contact us so we can understand your situation better and see if we can offer a solution.
+      answer: We have a free tier with no time limits. All features, except for enterprise and some server features
+        are available to all tiers, we bill based on the volume of database queries. If for some reason you cannot
+        afford the license, contact us so we can understand your situation better and see if we can offer a solution.
   audit logs:
     - question: How do audit logs work?
       answer: All connections to the database go through SQL Defender, whether they be from your application, your
