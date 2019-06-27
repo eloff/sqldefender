@@ -13,7 +13,7 @@ blurbs:
   performance:
     title: Improve PostgreSQL Performance
     content: "![PostgreSQL](images/PostgreSQL.svg) Access control rules are optimized and compiled into the query.
-      The planner is free to execute that query with its joins in the optimal order, [unlike with PostgreSQL's RLS](faq.html#RLS) restrictions. Connection pooling reduces load and memory usage on the database server.
+      The planner is free to execute that query with its joins in the optimal order, [unlike with PostgreSQL's RLS](/faq/#RLS) restrictions. Connection pooling reduces load and memory usage on the database server.
       Query deduplicaton and in-memory caching reduce load on the database and improve query latency."
       #Back-pressure rejects the most expensive queries when the database is overloaded.
   simple:
