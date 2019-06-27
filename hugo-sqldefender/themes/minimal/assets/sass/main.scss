@@ -51,7 +51,8 @@ summary:focus {
 $yellow: #fc0;
 $blue-light: #48f;
 $blue-dark: #003d8b;
-$green: #2ebc4f;	
+$green-light: #2ebc4f;
+$green-dark:	#28a746;
 $red: red;
 $grey-light: #e6e5e6;
 $grey-dark: #333;
@@ -144,7 +145,7 @@ a:hover, .link:hover {
 }
 // Page
 header {
-	border-bottom: 1px solid #e6e5e6;
+	border-bottom: 1px solid $grey-light;
 }
 .page {
 	position:relative;
@@ -172,7 +173,7 @@ footer {
 	background: linear-gradient($blue-dark, $blue-light);
 }
 .grey-section {
-	background:#e6e5e6;
+	background: $grey-light;
 }
 // Header
 
@@ -181,22 +182,22 @@ input, textarea {
 	padding: 8px;
 }
 button {
-	background-color:#2ebc4f;
-	color:#fff;
-	font-weight:500;
-	padding:8px;
-	border:1px solid #2ebc4f;
-	border-radius:4px;
+	background-color: $green-light;
+	color: white;
+	font-weight: 500;
+	padding: 8px;
+	border: 1px solid $green-light;
+	border-radius: 4px;
 }
 button:hover {
 	box-shadow:0 0 0 0.2em rgba(40,167,69,.3);
-	background-color:#28a746;
-	border-color:#28a746;
+	background-color: $green-dark;
+	border-color: $green-dark;
 }
 // Blurb
 .blurb h3, summary {
 	margin-bottom: 16px;
-	color:#48f;
+	color: $blue-light;
 	font-size: 20px;
 	@include not-small {
 		font-size: 24px;	
@@ -220,10 +221,10 @@ button:hover {
 	width: 80%;
 }
 .dark .blurb h3 {
-	color:#fc0;
+	color: $yellow;
 }
 .dark .blurb p {
-	color:#fff;
+	color: white;
 }
 .mauto {
 	margin: auto;

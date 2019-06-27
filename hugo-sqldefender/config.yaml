@@ -2,6 +2,11 @@ baseURL: http://sqldefender.com/
 languageCode: en-us
 title: SQL Defender
 theme: minimal
+enableGitInfo: true
+enableRobotsTXT: true
+googleAnalytics: UA-142880390-1
+metaDataFormat: yaml
+publishDir: ../docs
 menu:
   main:
     - identifier: home
