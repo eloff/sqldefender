@@ -21,10 +21,8 @@ faq:
         them as a service without contributing back. There are a few projects like Linux that are notable exceptions,
         but by and large they’re the exceptions to the rule. For every one success there are tens of thousands of
         projects that languish neglected in obscurity because the creators can’t quit their day job. The difficulty in monetizing open-source has deprived the software ecosystem of better maintained and higher quality software
-        and we're all poorer for it. However, we're still comitted to the freedom at the core of the open-source
-        philosophy. Our license allows the same freedoms as a permissive open-source license, except
-        you need a paid license based on your query volume, and you can't sublicense or offer it directly as a service
-        without permission.
+        and we're all poorer for it. We still provide the source code to ensure you can read it to cover
+        short-comings in the documentation, fix bugs, or make changes for your specific use case.
 
         #### What about the (A)GPL?
 
@@ -158,11 +156,12 @@ faq:
         # security rules and database queries using javascript middleware.
   billing:
     - question: Do you offer free licenses for non-commerical use?
-      answer: Yes, contact us and tell us about your project and we'll set you up with a free license.
+      answer: Yes, contact us and tell us about your project and we'll set you up with a free non-commercial license.
+        Some features aren't included.
     - question: Do you have a free trial or a startup version? 
-      answer: We have a free tier with no time limits. All features, except for enterprise and some server features
-        are available to all tiers, we bill based on the volume of database queries. If for some reason you cannot
-        afford the license, contact us so we can understand your situation better and see if we can offer a solution.
+      answer: We have a free tier with no time limits, we bill based on the volume of database queries. Some features
+        aren't included. If for some  reason you cannot afford the license, contact us so we can understand your
+        situation better and see if we can offer a solution.
   audit logs:
     - question: How do audit logs work?
       answer: All connections to the database go through SQL Defender, whether they be from your application, your

@@ -1,7 +1,13 @@
 <nav class="w-60">
 	<ul class="menu f3 flex">
 		{{ range .Site.Menus.main }}
-			<li class="ml1 ml2-ns"><a {{ if $.IsMenuCurrent "main" . }}class="current"{{ end }} title="{{ .Title }}" href="{{ .URL }}">{{ .Name }}</a></li>
+			<li class="ml1 ml2-ns">
+				{{ if or ($.IsMenuCurrent "main" .) (eq $.RelPermalink .URL) }}
+					<span class="current">{{ .Name }}</span>
+				{{ else }}
+					<a title="{{ .Title }}" href="{{ .URL }}">{{ .Name }}</a>
+				{{ end }}
+			</li>
 		{{ end }}
 	</ul>
 </nav>

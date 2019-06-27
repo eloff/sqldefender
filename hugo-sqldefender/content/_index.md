@@ -34,12 +34,13 @@ blurbs:
     title: Blockchain audit logs saved to S3
     content: "![Audit Logs](images/audit.svg) Every block appended to the audit log
       forms part of a cyptographic chain with the blocks that come before it, similar to
-      how it works in Bitcoin. You can be certain that every operation was performed as
-      logged without any retroactive changes (e.g. hackers covering their traces.) 
+      how it works in Bitcoin. This makes certain that every operation was performed as
+      logged without any retroactive changes. Altering any part of the log invalidates
+      all of the subsequent block signatures making the tampering evident.
       The logs are encrypted and saved to	S3 compatible cloud storage or an
-      on-premises version like Minio. They can also be replicated in full 
-      or just the block signatures to our offsite cloud storage and automatically
-      verified that they match when reading the logs back, ensuring they've not been 
-      tampered with. Create filters to keep sensitive information out of your logs."
+      on-premises version like Minio. The encrypted logs are replicated to our 
+      offsite cloud data center and automatically verified that the copies match when
+      reading the logs back, ensuring they've not been modified in one location.
+      You can create filters to keep sensitive information out of your logs."
 
 ---
